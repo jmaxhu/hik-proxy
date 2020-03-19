@@ -2,7 +2,9 @@
 
 该项目为调用海康视频接口的代理，方便前端调用视频相关接口。
 
-海康的视频接入文档地址为：(HikVision)[https://open.hikvision.com/docs/37e38899e583cfe4f9879a07a5294bf4]
+海康的视频接入文档地址为：[HikVision](https://open.hikvision.com/docs/37e38899e583cfe4f9879a07a5294bf4)
+
+该项目代码库：[hik-proxy](https://github.com/jmaxhu/hik-proxy)
 
 ## 使用说明
 
