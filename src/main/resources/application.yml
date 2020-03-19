@@ -1,0 +1,8 @@
+server:
+  port: 8090
+
+hik:
+  keys:
+    - ip: '1.1.1.1'
+      key: 'check this'
+      secret: 'check this'
