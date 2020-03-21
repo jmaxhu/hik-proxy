@@ -8,6 +8,14 @@
 
 ## 系统运行
 
+### 本地运行
+
+```shell script
+./mvnw spring-boot:run
+```
+
+### docker 运行
+
 ```shell script
 docker run -p "8090:8090" \
       -e HIK_KEYS[0]_IP=xxx \
@@ -40,6 +48,12 @@ services:
 
 ```
 docker-compose up -d
+```
+
+### 生成 docker 镜像
+
+```shell script
+./mvnw compile jib:build -Dimage=jmaxhu/hik-proxy:v0.2.0
 ```
 
 ## 使用说明
