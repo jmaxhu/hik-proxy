@@ -6,6 +6,10 @@
 
 该项目代码库：[hik-proxy](https://github.com/jmaxhu/hik-proxy)
 
+## 系统截图
+
+![截图](./screenshot.png)
+
 ## 系统运行
 
 ### 本地运行
