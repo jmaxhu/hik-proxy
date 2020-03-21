@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  hik-proxy:
+    image: jmaxhu/hik-proxy
+    container_name: hik-proxy
+    restart: always
+    ports:
+      - "8090:8090"
+    environment:
+      - HIK_KEYS[0]_IP=change it
+      - HIK_KEYS[0]_APPKEY=change it
+      - HIK_KEYS[0]_APPSECRET=change it

@@ -1,0 +1,12 @@
+.form-legend {
+    border-bottom: 1px solid #ddd;
+    font-size: 1.2em;
+}
+
+.video-container {
+    margin-top: 15px;
+}
+
+.video-container form .row {
+   margin-top: 8px;
+}

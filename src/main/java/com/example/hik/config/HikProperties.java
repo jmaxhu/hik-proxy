@@ -1,4 +1,4 @@
-package com.example.hik;
+package com.example.hik.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -16,8 +16,8 @@ public class HikProperties {
 
     public static class VideoKey {
         private String ip;
-        private String key;
-        private String secret;
+        private String appKey;
+        private String appSecret;
 
         public String getIp() {
             return ip;
@@ -27,20 +27,20 @@ public class HikProperties {
             this.ip = ip;
         }
 
-        public String getSecret() {
-            return secret;
+        public String getAppSecret() {
+            return appSecret;
         }
 
-        public void setSecret(String secret) {
-            this.secret = secret;
+        public String getAppKey() {
+            return appKey;
         }
 
-        public String getKey() {
-            return key;
+        public void setAppSecret(String appSecret) {
+            this.appSecret = appSecret;
         }
 
-        public void setKey(String key) {
-            this.key = key;
+        public void setAppKey(String appKey) {
+            this.appKey = appKey;
         }
     }
 }

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/video.js/7.7.5/video-js.min.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+    <title>海康视频sdk代理</title>
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">海康视频sdk调用代理</a>
+    <a href="https://open.hikvision.com/docs/8530061f19534a9993e2afeb70e7c96a" target="_blank">海康SDK文档</a>
+</nav>
+<div class="container video-container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <form id="apiForm">
+                        <fieldset class="form-group">
+                            <legend class="form-legend">视频账号</legend>
+                            <div class="row">
+                                <label for="txtIP" class="col-form-label col-sm-3">监控平台IP</label>
+                                <div class="col-sm-7">
+                                    <input type="text" id="txtIP" class="form-control"
+                                           placeholder="例如: 120.192.192.111:443" required>
+                                    <div class="invalid-feedback">IP不能为空</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label for="txtAppKey" class="col-form-label col-sm-3">合作方Key</label>
+                                <div class="col-sm-7">
+                                    <input type="text" id="txtAppKey" class="form-control" placeholder="由海康视频监控平台提供">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label for="txtAppSecret" class="col-form-label col-sm-3">合作方Secret</label>
+                                <div class="col-sm-7">
+                                    <input type="text" id="txtAppSecret" class="form-control" placeholder="由海康视频监控平台提供">
+                                </div>
+                            </div>
+                            <p class="text-muted" style="font-size: 0.8em; margin-top: 8px;">
+                                注：为了安全起见，可以只提供'监控平台IP'，不提供'合作方Key'和'合作方Secret'，这时必须在系统的配置文件中配置好。
+                            </p>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <legend class="form-legend">调用接口</legend>
+                            <div class="row">
+                                <label for="txtApiUrl" class="col-form-label col-sm-3">接口地址</label>
+                                <div class="col-sm-7">
+                                    <input type="text" id="txtApiUrl" class="form-control" placeholder="具体地址参考sdk文档"
+                                           required>
+                                    <div class="invalid-feedback">接口地址不能为空</div>
+                                    <p class="text-muted"
+                                       style="margin-bottom: 0; margin-top: 8px; font-size: 1em; display: none;"
+                                       id="apiHelp"></p>
+                                </div>
+                                <div class="col-sm-2" style="padding-left: 0;">
+                                    <div class="btn-group dropright">
+                                        <button type="button" class="btn btn-primary dropdown-toggle"
+                                                data-offset="-300,10" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                            接口
+                                        </button>
+                                        <div class="dropdown-menu" id="apiUrlContainer">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label for="txtApiParams" class="col-form-label col-sm-3">接口参数</label>
+                                <div class="col-sm-9">
+                                    <textarea id="txtApiParams" class="form-control" rows="10"
+                                              placeholder="JSON格式"></textarea>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="row">
+                            <div class="col-sm-10 offset-sm-1">
+                                <button class="btn btn-primary btn-block" id="btnCall" type="button">调用视频接口</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <form id="videoForm">
+                        <fieldset class="form-group">
+                            <legend class="form-legend">返回结果</legend>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <textarea id="txtResult" readonly class="form-control" rows="8"></textarea>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <legend class="form-legend">监控视频</legend>
+                            <div class="row">
+                                <label for="txtVideoUrl" class="col-form-label col-sm-3">视频地址</label>
+                                <div class="col-sm-7">
+                                    <input id="txtVideoUrl" class="form-control" type="text" placeholder="请输入视频地址" required>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="button" class="btn btn-primary" id="btnVideo">确定</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <video id="videoPlayer" class="video-js" controls preload="auto" width="520"
+                                           height="330" data-setup="{}">
+                                        <p class="vjs-no-js">
+                                            请开启 javascript，并使用
+                                            <a href="https://videojs.com/html5-video-support/" target="_blank"
+                                            >支持的浏览器</a>
+                                        </p>
+                                    </video>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.bootcss.com/video.js/7.7.5/video.min.js"></script>
+<script src="https://cdn.bootcss.com/video.js/7.7.5/lang/zh-CN.js"></script>
+<script src="index.js"></script>
+</body>
+</html>

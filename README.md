@@ -6,6 +6,42 @@
 
 该项目代码库：[hik-proxy](https://github.com/jmaxhu/hik-proxy)
 
+## 系统运行
+
+```shell script
+docker run -p "8090:8090" \
+      -e HIK_KEYS[0]_IP=xxx \
+      -e HIK_KEYS[0]_APPKEY=change \
+      -e HIK_KEYS[0]_APPSECRET=change \
+      jmaxhu/hik-proxy:v0.1.0
+```
+
+### 使用 docker compose
+
+创建一个 docker-compose.yml 的文件，内容如下。
+
+```
+version: '3'
+
+services:
+  hik-proxy:
+    image: jmaxhu/hik-proxy
+    container_name: hik-proxy
+    restart: always
+    ports:
+      - "8090:8090"
+    environment:
+      - HIK_KEYS[0]_IP=change it
+      - HIK_KEYS[0]_APPKEY=change it
+      - HIK_KEYS[0]_APPSECRET=change it
+```
+
+然后切换到包含该文件的目录，运行命令：
+
+```
+docker-compose up -d
+```
+
 ## 使用说明
 
 该项目只有一个接口地址为： **/api/hik**
@@ -45,14 +81,3 @@ Connection: close
 {"code":"0","msg":"SUCCESS","data":{"total":6,"pageNo":1,"pageSize":5,"list":[{"altitude":null,"cameraIndexCode":"69c41a798a094b11a022b6ae5b22ddaf","cameraName":"第三通道","cameraType":0,"cameraTypeName":"枪"...
 ```
 
-## 系统运行
-
-```shell script
-./mvnw spring-boot:run
-```
-
-## jib 创建 docker
-
-```shell script
-./mvnw compile jib:build -Dimage=jmaxhu/hik-proxy:v0.1.0
-```

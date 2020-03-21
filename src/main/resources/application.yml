@@ -3,6 +3,6 @@ server:
 
 hik:
   keys:
-    - ip: '1.1.1.1'
-      key: 'check this'
-      secret: 'check this'
+    - ip: 'ip'
+      appKey: 'key'
+      appSecret: 'secret'
