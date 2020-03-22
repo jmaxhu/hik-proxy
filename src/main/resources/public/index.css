@@ -3,6 +3,10 @@
     font-size: 1.2em;
 }
 
+.link-bar > a {
+   margin-left: 10px;
+}
+
 .video-container {
     margin-top: 15px;
 }

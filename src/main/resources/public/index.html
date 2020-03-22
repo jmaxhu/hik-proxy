@@ -11,7 +11,11 @@
 <body>
 <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">海康视频sdk调用代理</a>
-    <a href="https://open.hikvision.com/docs/8530061f19534a9993e2afeb70e7c96a" target="_blank">海康SDK文档</a>
+    <div class="link-bar">
+        <a href="https://github.com/jmaxhu/hik-proxy" target="_blank">github</a>
+        <a href="https://gitee.com/maxwell/hik-proxy" target="_blank">码云</a>
+        <a href="https://open.hikvision.com/docs/8530061f19534a9993e2afeb70e7c96a" target="_blank">海康SDK文档</a>
+    </div>
 </nav>
 <div class="container video-container">
     <div class="row">
@@ -103,7 +107,8 @@
                             <div class="row">
                                 <label for="txtVideoUrl" class="col-form-label col-sm-3">视频地址</label>
                                 <div class="col-sm-7">
-                                    <input id="txtVideoUrl" class="form-control" type="text" placeholder="请输入视频地址" required>
+                                    <input id="txtVideoUrl" class="form-control" type="text" placeholder="请输入视频地址"
+                                           required>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-primary" id="btnVideo">确定</button>
@@ -111,14 +116,11 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <video id="videoPlayer" class="video-js" controls preload="auto" width="520"
-                                           height="330" data-setup="{}">
-                                        <p class="vjs-no-js">
-                                            请开启 javascript，并使用
-                                            <a href="https://videojs.com/html5-video-support/" target="_blank"
-                                            >支持的浏览器</a>
-                                        </p>
-                                    </video>
+                                    <video-js id="videoPlayer" class="vjs-default-skin" controls preload="auto"
+                                              width="520" height="330">
+                                    </video-js>
+                                    <div id="videoError" style="display: none;" class="alert alert-danger"
+                                         role="alert"></div>
                                 </div>
                             </div>
                         </fieldset>

@@ -199,7 +199,10 @@ $(function () {
     });
 
     // call api
-    $('#btnCall').on('click', function () {
+    const btnCall = $('#btnCall');
+    btnCall.on('click', function () {
+        btnCall.prop('disabled', true);
+        btnCall.text('接口调用中......');
         const form = document.getElementById('apiForm');
         if (form.checkValidity() === true) {
             form.classList.remove('was-validated');
@@ -226,6 +229,9 @@ $(function () {
             $('#txtResult').text(JSON.stringify(res, null, 2));
         }).fail(function (jqXHR, textStatus, errorThrown) {
             console.log(textStatus, errorThrown);
+        }).always(function () {
+            btnCall.prop('disabled', false);
+            btnCall.text('调用视频接口');
         });
     });
 
@@ -235,10 +241,12 @@ $(function () {
         const form = document.getElementById('videoForm');
         if (form.checkValidity() === true) {
             form.classList.remove('was-validated');
+            document.getElementById('videoPlayer').innerHTML = '<source src="' + videoUrl + '" type="application/x-mpegURL">';
             let video = window.videojs('videoPlayer');
-            video.src({
-                type: 'application/x-mpegUR',
-                src: videoUrl
+            $('#videoError').hide();
+            video.on('error', function (evt) {
+                document.getElementById('videoError').innerHTML = '视频播放失败，请检查视频点是否正常！';
+                $('#videoError').show();
             });
             video.play();
         } else {
