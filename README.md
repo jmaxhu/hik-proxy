@@ -4,7 +4,7 @@
 
 海康的视频接入文档地址为：[HikVision](https://open.hikvision.com/docs/37e38899e583cfe4f9879a07a5294bf4)
 
-该项目代码库：[hik-proxy](https://github.com/jmaxhu/hik-proxy)
+该项目代码库：[github](https://github.com/jmaxhu/hik-proxy) [码云](https://gitee.com/maxwell/hik-proxy)
 
 ## 系统截图
 
