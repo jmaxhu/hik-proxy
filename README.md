@@ -25,7 +25,7 @@ docker run -p "8090:8090" \
       -e HIK_KEYS[0]_IP=xxx \
       -e HIK_KEYS[0]_APPKEY=change \
       -e HIK_KEYS[0]_APPSECRET=change \
-      jmaxhu/hik-proxy:v0.1.0
+      jmaxhu/hik-proxy:latest
 ```
 
 ### 使用 docker compose
@@ -56,8 +56,16 @@ docker-compose up -d
 
 ### 生成 docker 镜像
 
+创建本地镜像
+
 ```shell script
-./mvnw compile jib:build -Dimage=jmaxhu/hik-proxy:v0.2.0
+./mvnw compile jib:dockerBuild
+```
+
+生成镜像并上传到 docker hub
+
+```shell script
+./mvnw compile jib:build
 ```
 
 ## 使用说明
