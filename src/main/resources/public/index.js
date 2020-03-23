@@ -220,7 +220,7 @@ $(function () {
         }
         requestBody.apiUrl = $('#txtApiUrl').val();
         requestBody.apiParams = $('#txtApiParams').val();
-        $.ajax('http://localhost:8090/api/hik', {
+        $.ajax('/api/hik', {
             method: 'POST',
             data: JSON.stringify(requestBody),
             dataType: "json",
