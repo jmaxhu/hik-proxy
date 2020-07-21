@@ -61,7 +61,7 @@
                 <version>2.1.0</version>
                 <configuration>
                     <from>
-                        <image>gcr.azk8s.cn/distroless/java</image>
+                        <image>gcr.io/distroless/java</image>
                     </from>
                     <to>
                         <image>jmaxhu/hik-proxy:latest</image>
