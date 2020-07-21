@@ -45,7 +45,9 @@ public class HikController {
         ArtemisConfig.appSecret = appSecret;
 
         Map<String, String> path = new HashMap<>();
-        path.put("https://", MessageFormat.format("/artemis{0}", hikRequest.getApiUrl()));
+        String apiUrl = hikRequest.getApiUrl();
+        String url = MessageFormat.format(apiUrl.contains("/ccms/") ? "{0}" : "/artemis{0}", apiUrl);
+        path.put("https://", url);
 
         String result = ArtemisHttpUtil.doPostStringArtemis(path, hikRequest.getApiParams(), null, null, "application/json");
 
