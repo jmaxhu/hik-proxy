@@ -18,6 +18,12 @@
 ./mvnw spring-boot:run
 ```
 
+### 本地打包
+
+```shell script
+./mvnw package
+```
+
 ### docker 运行
 
 ```shell script

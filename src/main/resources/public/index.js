@@ -241,8 +241,10 @@ $(function () {
         const form = document.getElementById('videoForm');
         if (form.checkValidity() === true) {
             form.classList.remove('was-validated');
-            document.getElementById('videoPlayer').innerHTML = '<source src="' + videoUrl + '" type="application/x-mpegURL">';
+            // document.getElementById('videoPlayer').innerHTML = '<source src="' + videoUrl + '" type="application/x-mpegURL">';
             let video = window.videojs('videoPlayer');
+            video.reset();
+            video.src({src: videoUrl, type: 'application/x-mpegURL'})
             $('#videoError').hide();
             video.on('error', function (evt) {
                 document.getElementById('videoError').innerHTML = '视频播放失败，请检查视频点是否正常！';

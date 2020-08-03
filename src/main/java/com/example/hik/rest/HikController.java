@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
 
 import javax.net.ssl.*;
 import java.io.*;
@@ -38,11 +37,9 @@ public class HikController {
     private static final String CCMS = "/ccms/";
 
     private final HikProperties hikProperties;
-    private final RestTemplate restTemplate;
 
     public HikController(HikProperties hikProperties) {
         this.hikProperties = hikProperties;
-        this.restTemplate = new RestTemplate();
     }
 
     @PostMapping("/hik")
