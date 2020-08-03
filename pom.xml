@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.example</groupId>
     <artifactId>hik</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <name>hik</name>
     <description>Demo project for Spring Boot</description>
 
@@ -97,7 +97,7 @@
                         <image>gcr.io/distroless/java</image>
                     </from>
                     <to>
-                        <image>jmaxhu/hik-proxy:1.0.2</image>
+                        <image>jmaxhu/hik-proxy:1.0.3</image>
                     </to>
                     <container>
                         <ports>
